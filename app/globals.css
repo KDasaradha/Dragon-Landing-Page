@@ -75,3 +75,11 @@
   }
 }
 
+@layer utilities {
+  .animate-pulse-slow {
+    animation: pulse 6s infinite;
+  }
+  .animate-spin-slow {
+    animation: spin 20s linear infinite;
+  }
+}
