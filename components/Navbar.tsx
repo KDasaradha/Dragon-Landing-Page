@@ -97,6 +97,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { Menu, Sun, Moon, Laptop } from "lucide-react";
+import { useScrollProgress } from "../hooks/useScrollProgress"; // Custom hook
 
 type Theme = "dark" | "light" | "system";
 
@@ -107,7 +108,6 @@ interface NavbarProps {
   setSidebarOpen: (open: boolean) => void;
 }
 
-// Animation variants
 const navVariants = {
   hidden: { opacity: 0, y: -20 },
   visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
@@ -116,16 +116,13 @@ const navVariants = {
 const linkVariants = {
   hover: {
     scale: 1.1,
-    color: "#10b981", // emerald-600
+    color: "#10b981",
     transition: { duration: 0.3, ease: "easeInOut" },
   },
 };
 
 const buttonVariants = {
-  hover: {
-    scale: 1.15,
-    transition: { duration: 0.2, ease: "easeInOut" },
-  },
+  hover: { scale: 1.15, transition: { duration: 0.2, ease: "easeInOut" } },
   tap: { scale: 0.95 },
 };
 
@@ -135,6 +132,8 @@ export function Navbar({
   sidebarOpen,
   setSidebarOpen,
 }: NavbarProps) {
+  const scrollProgress = useScrollProgress();
+
   return (
     <motion.nav
       variants={navVariants}
@@ -142,9 +141,18 @@ export function Navbar({
       animate="visible"
       className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-6 py-4 bg-white/90 dark:bg-slate-900/90 backdrop-blur-md shadow-lg border-b border-slate-200 dark:border-slate-800"
     >
+      {/* Progress Bar */}
+      <div
+        className="absolute top-0 left-0 h-1 bg-emerald-600"
+        style={{ width: `${scrollProgress}%` }}
+      />
+
       {/* Logo & Title */}
       <Link href="/" className="flex items-center space-x-3 group">
-        <motion.div whileHover={{ rotate: 10, scale: 1.1 }} transition={{ duration: 0.3 }}>
+        <motion.div
+          whileHover={{ rotate: 10, scale: 1.1 }}
+          transition={{ duration: 0.3 }}
+        >
           <Image
             src="/images/dragon.svg.jpg"
             alt="Night Fury Logo"
@@ -170,7 +178,7 @@ export function Navbar({
           <motion.li key={item.id} variants={linkVariants} whileHover="hover">
             <a
               href={`#${item.id}`}
-              className="text-slate-700 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-300"
+              className="text-slate-700 dark:text-slate-300 hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-500"
             >
               {item.label}
             </a>
@@ -180,7 +188,6 @@ export function Navbar({
 
       {/* Theme Toggle & Menu Button */}
       <div className="flex items-center space-x-4">
-        {/* Theme Toggle */}
         <div className="flex bg-slate-200 dark:bg-slate-800 rounded-full p-1 shadow-inner">
           <motion.button
             variants={buttonVariants}
@@ -226,14 +233,15 @@ export function Navbar({
           </motion.button>
         </div>
 
-        {/* Mobile Menu Button */}
         <motion.button
           variants={buttonVariants}
           whileHover="hover"
           whileTap="tap"
           onClick={() => setSidebarOpen(!sidebarOpen)}
-          className="md:hidden text-slate-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-300"
+          className="md:hidden text-slate-900 dark:text-white hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-500"
           aria-label="Toggle sidebar"
+          aria-controls="sidebar-menu"
+          aria-expanded={sidebarOpen}
         >
           <Menu className="w-8 h-8" />
         </motion.button>

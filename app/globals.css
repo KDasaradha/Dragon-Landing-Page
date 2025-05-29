@@ -83,3 +83,41 @@
     animation: spin 20s linear infinite;
   }
 }
+
+@keyframes pulse-slow {
+  0%, 100% { opacity: 0.5; }
+  50% { opacity: 1; }
+}
+@keyframes spin-slow {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.animate-pulse-slow { animation: pulse-slow 6s infinite; }
+.animate-spin-slow { animation: spin-slow 20s linear infinite; }
+
+@keyframes pulse {
+  0%, 100% { opacity: 0.8; }
+  50% { opacity: 1; }
+}
+.animate-pulse { animation: pulse 2s infinite; }
+
+
+.neon-text {
+  text-shadow: 0 0 10px #00ccff, 0 0 20px #00ccff, 0 0 40px #00ccff;
+}
+
+@keyframes neon-flicker {
+  0% { opacity: 0.8; text-shadow: 0 0 5px #ff0000, 0 0 10px #ff0000; }
+  50% { opacity: 1; text-shadow: 0 0 10px #00ffcc, 0 0 20px #00ffcc; }
+  100% { opacity: 0.8; text-shadow: 0 0 5px #ff00ff, 0 0 10px #ff00ff; }
+}
+
+.text-glow {
+  color: white;
+  display: inline-block;
+  animation: neon-flicker 1.5s infinite alternate;
+}
+
+.neon-glow {
+  filter: drop-shadow(0 0 10px cyan);
+}
