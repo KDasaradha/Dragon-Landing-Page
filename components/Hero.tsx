@@ -1,247 +1,58 @@
-// import Image from "next/image";
-// import { Button } from "@/components/ui/button";
-// import { motion } from "framer-motion";
-
-// export function Hero() {
-//   return (
-//     <section className="flex flex-col items-center text-center pt-32 pb-16 px-6 dark:bg-gradient-to-b dark:from-slate-900 dark:to-slate-950 bg-gradient-to-b from-slate-50 to-slate-100 relative overflow-hidden">
-//       <div className="absolute inset-0 opacity-10 dark:opacity-20">
-//         <div className="absolute top-0 left-0 w-full h-full bg-[url('/images/dragon-scales.svg')] bg-repeat bg-[length:50px_50px]"></div>
-//       </div>
-//       <motion.h1
-//         initial={{ opacity: 0, y: -20 }}
-//         animate={{ opacity: 1, y: 0 }}
-//         transition={{ duration: 1 }}
-//         className="text-5xl md:text-7xl font-bold dark:text-emerald-400 text-emerald-600 tracking-tight z-10"
-//       >
-//         🌌 Night Fury & The Legends of Dragons
-//       </motion.h1>
-//       <p className="mt-6 text-lg md:text-xl dark:text-slate-300 text-slate-700 max-w-3xl leading-relaxed z-10">
-//         🔥{" "}
-//         <span className="dark:text-emerald-400 text-emerald-600">
-//           Night Fury: The Phantom of the Skies
-//         </span>{" "}
-//         <br />
-//         The Night Fury is a dragon of myth and mystery, known for its incredible
-//         stealth, intelligence, and power. It is one of the fastest dragons,
-//         soaring through the skies like a shadow, striking its enemies before
-//         they even realize its presence.
-//       </p>
-//       <Button className="mt-8 bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 px-8 py-3 text-lg rounded-lg shadow-lg transform hover:scale-105 transition-transform z-10">
-//         Discover the Legend
-//       </Button>
-//       <motion.div
-//         initial={{ opacity: 0, scale: 0.95 }}
-//         animate={{ opacity: 1, scale: 1 }}
-//         transition={{ duration: 2 }}
-//         className="mt-12 z-10 relative"
-//       >
-//         <div className="absolute -inset-1 bg-gradient-to-r from-emerald-600 to-purple-600 rounded-xl blur opacity-30 dark:opacity-50 animate-pulse"></div>
-//         <Image
-//           src="/images/ai-generated-7702855_1280.jpg"
-//           alt="Night Fury in Flight"
-//           width={960}
-//           height={540}
-//           className="rounded-xl shadow-2xl object-cover relative z-10"
-//         />
-//       </motion.div>
-//     </section>
-//   );
-// }
-
-
-// "use client";
-
-// import Image from "next/image";
-// import { Button } from "@/components/ui/button";
-// import { motion } from "framer-motion";
-// import Link from "next/link";
-// import { FaDragon, FaExternalLinkAlt } from "react-icons/fa";
-
-// // Animation variants
-// const fadeInUp = {
-//   hidden: { opacity: 0, y: 20 },
-//   visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
-// };
-
-// const scaleIn = {
-//   hidden: { opacity: 0, scale: 0.9 },
-//   visible: { opacity: 1, scale: 1, transition: { duration: 1.2, ease: "easeOut" } },
-// };
-
-// const buttonVariants = {
-//   hover: {
-//     scale: 1.1,
-//     boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.2)",
-//     transition: { duration: 0.3, ease: "easeInOut" },
-//   },
-// };
-
-// const staggerContainer = {
-//   hidden: { opacity: 0 },
-//   visible: {
-//     opacity: 1,
-//     transition: { staggerChildren: 0.2, delayChildren: 0.1 },
-//   },
-// };
-
-// export function Hero() {
-//   return (
-//     <section
-//       id="hero"
-//       className="relative flex flex-col items-center text-center pt-32 pb-16 px-6 bg-gradient-to-b from-slate-50 to-gray-200 dark:from-slate-900 dark:to-slate-950 overflow-hidden min-h-screen"
-//     >
-//       {/* Background Elements */}
-//       <div className="absolute inset-0 opacity-10 dark:opacity-20 pointer-events-none">
-//         <div className="absolute top-0 left-0 w-full h-full bg-[url('/images/dragon-scales.svg')] bg-repeat bg-[length:50px_50px] animate-pulse-slow" />
-//       </div>
-//       <div className="absolute inset-0 flex justify-center items-center opacity-5 dark:opacity-10">
-//         <FaDragon className="w-96 h-96 text-emerald-500 dark:text-emerald-300 animate-spin-slow" />
-//       </div>
-
-//       <div className="max-w-5xl mx-auto relative z-10">
-//         {/* Title */}
-//         <motion.h1
-//           variants={fadeInUp}
-//           initial="hidden"
-//           animate="visible"
-//           className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-emerald-600 dark:text-emerald-400 flex items-center justify-center gap-3"
-//         >
-//           <FaDragon /> Night Fury & Dragon Legends
-//         </motion.h1>
-
-//         {/* Subtitle/Intro */}
-//         <motion.p
-//           variants={fadeInUp}
-//           initial="hidden"
-//           animate="visible"
-//           className="mt-6 text-lg md:text-xl lg:text-2xl text-slate-700 dark:text-slate-300 max-w-3xl leading-relaxed"
-//         >
-//           <span className="font-semibold text-emerald-600 dark:text-emerald-400">
-//             Night Fury: Phantom of the Skies
-//           </span>{" "}
-//           <br />
-//           A creature of myth and marvel, the Night Fury—embodied by Toothless—soars
-//           with unmatched stealth, speed, and intellect. Striking like a shadow, its
-//           plasma blasts shatter the silence, leaving legends in its wake.
-//         </motion.p>
-
-//         {/* Buttons */}
-//         <motion.div
-//           variants={staggerContainer}
-//           initial="hidden"
-//           animate="visible"
-//           className="mt-8 flex flex-col sm:flex-row gap-4 justify-center"
-//         >
-//           <motion.div variants={buttonVariants} whileHover="hover">
-//             <Button
-//               asChild
-//               className="px-8 py-3 text-lg bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 rounded-full shadow-lg transition-all duration-300"
-//             >
-//               <Link href="#features">Discover the Legend</Link>
-//             </Button>
-//           </motion.div>
-//           <motion.div variants={buttonVariants} whileHover="hover">
-//             <Button
-//               asChild
-//               variant="outline"
-//               className="px-8 py-3 text-lg text-emerald-600 dark:text-emerald-400 border-emerald-600 dark:border-emerald-400 hover:bg-emerald-100 dark:hover:bg-slate-800 transition-all duration-300"
-//             >
-//               <Link
-//                 href="https://howtotrainyourdragon.fandom.com/wiki/Night_Fury"
-//                 target="_blank"
-//                 rel="noopener noreferrer"
-//               >
-//                 Explore Wiki <FaExternalLinkAlt className="ml-2" />
-//               </Link>
-//             </Button>
-//           </motion.div>
-//         </motion.div>
-
-//         {/* Hero Image */}
-//         <motion.div
-//           variants={scaleIn}
-//           initial="hidden"
-//           animate="visible"
-//           className="mt-12 relative"
-//         >
-//           <div className="absolute -inset-2 bg-gradient-to-r from-emerald-600 to-purple-600 rounded-xl blur-xl opacity-40 dark:opacity-60 animate-pulse" />
-//           <div className="relative group">
-//             <Image
-//               src="/images/ai-generated-7702855_1280.jpg"
-//               alt="Night Fury in Flight"
-//               width={960}
-//               height={540}
-//               className="rounded-xl shadow-2xl object-cover transition-transform duration-500 group-hover:scale-105"
-//             />
-//             <div className="absolute inset-0 bg-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl" />
-//           </div>
-//         </motion.div>
-//       </div>
-//     </section>
-//   );
-// }
-
-
 "use client";
 
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import { FaDragon, FaExternalLinkAlt } from "react-icons/fa";
-import Particles from "@tsparticles/react";
-import { useCallback } from "react";
-import { loadFull } from "tsparticles";
-import { IOptions, RecursivePartial } from "tsparticles-engine";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { useCallback, useMemo, useEffect, useState } from "react";
+import { loadSlim } from "@tsparticles/slim";
+import type { Container, ISourceOptions } from "@tsparticles/engine";
+import { easings } from "../utils/animations";
 
-
-const fadeInUp = {
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: "easeOut" } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.8, ease: easings.easeOut } },
 };
 
-const scaleIn = {
+const scaleIn: Variants = {
   hidden: { opacity: 0, scale: 0.9 },
-  visible: { opacity: 1, scale: 1, transition: { duration: 1.2, ease: "easeOut" } },
+  visible: { opacity: 1, scale: 1, transition: { duration: 1.2, ease: easings.easeOut } },
 };
 
-const buttonVariants = {
-  hover: { scale: 1.1, boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.2)", transition: { duration: 0.3, ease: "easeInOut" } },
+const buttonVariants: Variants = {
+  hover: { scale: 1.1, boxShadow: "0px 5px 15px rgba(0, 0, 0, 0.2)", transition: { duration: 0.3, ease: easings.easeInOut } },
 };
 
-const staggerContainer = {
+const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: { opacity: 1, transition: { staggerChildren: 0.2, delayChildren: 0.1 } },
 };
 
 export function Hero() {
-  const particlesInit = useCallback(async (engine: any) => {
-    await loadFull(engine);
+  const [init, setInit] = useState(false);
+
+  // Initialize particles engine
+  useEffect(() => {
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setInit(true);
+    });
   }, []);
 
-  // const particlesOptions = {
-  //   particles: {
-  //     number: { value: 50, density: { enable: true, value_area: 800 } },
-  //     color: { value: ["#10b981", "#9333ea"] }, // emerald-600, purple-600
-  //     shape: { type: "circle" },
-  //     opacity: { value: 0.5, random: true },
-  //     size: { value: 3, random: true },
-  //     move: { enable: true, speed: 1, direction: "top", random: true, out_mode: "out" },
-  //   },
-  //   interactivity: {
-  //     events: { onhover: { enable: true, mode: "repulse" }, onclick: { enable: true, mode: "push" } },
-  //     modes: { repulse: { distance: 100 }, push: { quantity: 4 } },
-  //   },
-  // };
+  const particlesLoaded = useCallback(async (container?: Container): Promise<void> => {
+    console.log(container);
+  }, []);
 
-  const particlesOptions: RecursivePartial<IOptions> = {
+  const particlesOptions: ISourceOptions = useMemo(() => ({
     particles: {
       number: {
         value: 80,
         density: {
           enable: true,
-          value_area: 800,
+          area: 800,
         },
       },
       color: {
@@ -252,7 +63,7 @@ export function Hero() {
       },
       opacity: {
         value: 0.5,
-        random: false,
+        random: true,
       },
       size: {
         value: 3,
@@ -260,9 +71,12 @@ export function Hero() {
       },
       move: {
         enable: true,
-        speed: 2,
-        direction: "none",
-        outModes: "out",
+        speed: 1,
+        direction: "top",
+        random: true,
+        outModes: {
+          default: "out",
+        },
       },
     },
     interactivity: {
@@ -285,101 +99,99 @@ export function Hero() {
         },
       },
     },
-  };
-  
+  }), []);
 
   return (
-    <section
-      id="hero"
-      className="relative flex flex-col items-center text-center pt-32 pb-16 px-6 bg-gradient-to-b from-slate-50 to-gray-200 dark:from-slate-900 dark:to-slate-950 overflow-hidden min-h-screen"
-    >
-      {/* Particle Background */}
-      <Particles
-        id="tsparticles"
-        init={particlesInit}
-        options={particlesOptions}
-        className="absolute inset-0 z-0"
-      />
-
-      {/* Background Elements */}
-      <div className="absolute inset-0 opacity-10 dark:opacity-20 pointer-events-none">
-        <div className="absolute top-0 left-0 w-full h-full bg-[url('/images/dragon-scales.svg')] bg-repeat bg-[length:50px_50px] animate-pulse-slow" />
-      </div>
-      <div className="absolute inset-0 flex justify-center items-center opacity-5 dark:opacity-10">
-        <FaDragon className="w-96 h-96 text-emerald-500 dark:text-emerald-300 animate-spin-slow" />
+    <section className="relative flex flex-col items-center text-center pt-32 pb-16 px-6 dark:bg-gradient-to-b dark:from-slate-900 dark:to-slate-950 bg-gradient-to-b from-slate-50 to-slate-100 overflow-hidden">
+      {/* Particles Background */}
+      <div className="absolute inset-0 z-0">
+        {init && (
+          <Particles
+            id="tsparticles"
+            particlesLoaded={particlesLoaded}
+            options={particlesOptions}
+            className="w-full h-full"
+          />
+        )}
       </div>
 
-      <div className="max-w-5xl mx-auto relative z-10">
+      {/* Dragon Scale Pattern */}
+      <div className="absolute inset-0 opacity-10 dark:opacity-20 z-[1]">
+        <div className="absolute top-0 left-0 w-full h-full bg-[url('/images/dragon-scales.svg')] bg-repeat bg-[length:50px_50px]"></div>
+      </div>
+
+      {/* Main Content */}
+      <motion.div
+        variants={staggerContainer}
+        initial="hidden"
+        animate="visible"
+        className="relative z-10 max-w-5xl mx-auto"
+      >
         <motion.h1
           variants={fadeInUp}
-          initial="hidden"
-          animate="visible"
-          className="text-5xl md:text-7xl lg:text-8xl font-extrabold tracking-tight text-emerald-600 dark:text-emerald-400 flex items-center justify-center gap-3"
+          className="text-5xl md:text-7xl font-bold dark:text-emerald-400 text-emerald-600 tracking-tight mb-6"
         >
-          <FaDragon /> Night Fury & Dragon Legends
+          <span className="inline-block">🌌</span>{" "}
+          <span className="holographic-text text-reveal overflow-hidden whitespace-nowrap">
+            Night Fury & The Legends of Dragons
+          </span>
         </motion.h1>
 
         <motion.p
           variants={fadeInUp}
-          initial="hidden"
-          animate="visible"
-          className="mt-6 text-lg md:text-xl lg:text-2xl text-slate-700 dark:text-slate-300 max-w-3xl leading-relaxed"
+          className="text-lg md:text-xl dark:text-slate-300 text-slate-700 max-w-3xl leading-relaxed mb-8"
         >
-          <span className="font-semibold text-emerald-600 dark:text-emerald-400">
-            Night Fury: Phantom of the Skies
-          </span>
+          🔥{" "}
+          <span className="dark:text-emerald-400 text-emerald-600 font-semibold">
+            Night Fury: The Phantom of the Skies
+          </span>{" "}
           <br />
-          A creature of myth and marvel, the Night Fury—embodied by Toothless—soars
-          with unmatched stealth, speed, and intellect. Striking like a shadow, its
-          plasma blasts shatter the silence, leaving legends in its wake.
+          The Night Fury is a dragon of myth and mystery, known for its incredible
+          stealth, intelligence, and power. It is one of the fastest dragons,
+          soaring through the skies like a shadow, striking its enemies before
+          they even realize its presence.
         </motion.p>
 
-        <motion.div
-          variants={staggerContainer}
-          initial="hidden"
-          animate="visible"
-          className="mt-8 flex flex-col sm:flex-row gap-4 justify-center"
-        >
-          <motion.div variants={buttonVariants} whileHover="hover">
-            <Button
-              asChild
-              className="px-8 py-3 text-lg bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 rounded-full shadow-lg transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-            >
-              <Link href="#features">Discover the Legend</Link>
-            </Button>
-          </motion.div>
-          <motion.div variants={buttonVariants} whileHover="hover">
-            <Button
-              asChild
-              variant="outline"
-              className="px-8 py-3 text-lg text-emerald-600 dark:text-emerald-400 border-emerald-600 dark:border-emerald-400 hover:bg-emerald-100 dark:hover:bg-slate-800 transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-emerald-500"
-            >
-              <Link href="https://howtotrainyourdragon.fandom.com/wiki/Night_Fury" target="_blank" rel="noopener noreferrer">
-                Explore Wiki <FaExternalLinkAlt className="ml-2" />
-              </Link>
-            </Button>
-          </motion.div>
+        <motion.div variants={fadeInUp} className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+          <Link href="#dragons">
+            <motion.div variants={buttonVariants} whileHover="hover">
+              <Button className="bg-emerald-600 hover:bg-emerald-700 dark:bg-emerald-500 dark:hover:bg-emerald-600 px-8 py-3 text-lg rounded-lg shadow-lg">
+                <FaDragon className="mr-2" />
+                Discover the Legend
+              </Button>
+            </motion.div>
+          </Link>
+          <Link href="#about">
+            <motion.div variants={buttonVariants} whileHover="hover">
+              <Button variant="outline" className="px-8 py-3 text-lg rounded-lg">
+                <FaExternalLinkAlt className="mr-2" />
+                Learn More
+              </Button>
+            </motion.div>
+          </Link>
         </motion.div>
 
-        <motion.div
-          variants={scaleIn}
-          initial="hidden"
-          animate="visible"
-          className="mt-12 relative"
-        >
-          <div className="absolute -inset-2 bg-gradient-to-r from-emerald-600 to-purple-600 rounded-xl blur-xl opacity-40 dark:opacity-60 animate-pulse" />
-          <div className="relative group">
+        <motion.div variants={scaleIn} className="relative group">
+          <div className="absolute -inset-1 bg-gradient-to-r from-emerald-600 to-purple-600 rounded-xl blur opacity-30 dark:opacity-50 animate-mystical-pulse"></div>
+          <div className="absolute -inset-2 bg-gradient-to-r from-emerald-400 to-purple-400 rounded-xl blur-lg opacity-20 animate-glow-pulse"></div>
+          <motion.div
+            className="relative z-10 overflow-hidden rounded-xl"
+            whileHover={{ scale: 1.02 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          >
             <Image
               src="/images/ai-generated-7702855_1280.jpg"
               alt="Night Fury in Flight"
               width={960}
               height={540}
-              className="rounded-xl shadow-2xl object-cover transition-transform duration-500 group-hover:scale-105"
+              className="rounded-xl shadow-2xl object-cover"
+              priority
             />
-            <div className="absolute inset-0 bg-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 rounded-xl" />
-          </div>
+            {/* Shimmer overlay on hover */}
+            <div className="absolute inset-0 scale-shimmer opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+          </motion.div>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 }

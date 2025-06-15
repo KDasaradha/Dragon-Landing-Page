@@ -45,6 +45,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { FaDragon, FaTimes } from "react-icons/fa";
+import { easings } from "../utils/animations";
 
 interface SidebarProps {
   sidebarOpen: boolean;
@@ -52,7 +53,7 @@ interface SidebarProps {
 }
 
 // Animation variants
-const sidebarVariants = {
+const sidebarVariants: Variants = {
   hidden: { x: "100%", opacity: 0 },
   visible: {
     x: 0,
@@ -66,17 +67,17 @@ const sidebarVariants = {
   },
 };
 
-const linkVariants = {
+const linkVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.4, ease: "easeOut" },
+    transition: { duration: 0.4, ease: easings.easeOut },
   },
   hover: {
     scale: 1.05,
     color: "#34d399", // emerald-400
-    transition: { duration: 0.2, ease: "easeInOut" },
+    transition: { duration: 0.2, ease: easings.easeInOut },
   },
 };
 

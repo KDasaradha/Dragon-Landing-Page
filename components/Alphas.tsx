@@ -73,9 +73,10 @@
 
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variants } from "framer-motion";
 import Link from "next/link";
 import { FaCrown, FaExternalLinkAlt } from "react-icons/fa";
+import { easings } from "../utils/animations";
 
 // Define types for alpha dragons
 interface AlphaDragon {
@@ -131,37 +132,37 @@ const alphas: AlphaDragon[] = [
 
 export function Alphas() {
   // Animation variants for cards
-  const cardVariants = {
+  const cardVariants: Variants = {
     hidden: { opacity: 0, y: 30, scale: 0.95 },
     visible: {
       opacity: 1,
       y: 0,
       scale: 1,
-      transition: { duration: 0.5, ease: "easeOut" },
+      transition: { duration: 0.5, ease: easings.easeOut },
     },
     hover: {
       scale: 1.05,
       boxShadow: "0px 15px 30px rgba(0, 0, 0, 0.2)",
-      transition: { duration: 0.3, ease: "easeInOut" },
+      transition: { duration: 0.3, ease: easings.easeInOut },
     },
   };
 
   // Animation variants for the role section
-  const roleVariants = {
+  const roleVariants: Variants = {
     hidden: { opacity: 0, y: 20 },
     visible: {
       opacity: 1,
       y: 0,
-      transition: { duration: 0.6, ease: "easeOut" },
+      transition: { duration: 0.6, ease: easings.easeOut },
     },
     hover: {
       scale: 1.02,
       boxShadow: "0px 10px 20px rgba(0, 0, 0, 0.15)",
-      transition: { duration: 0.3, ease: "easeInOut" },
+      transition: { duration: 0.3, ease: easings.easeInOut },
     },
   };
 
-  const staggerContainer = {
+  const staggerContainer: Variants = {
     hidden: { opacity: 0 },
     visible: {
       opacity: 1,
@@ -169,9 +170,9 @@ export function Alphas() {
     },
   };
 
-  const fadeInUp = {
+  const fadeInUp: Variants = {
     hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+    visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: easings.easeOut } },
   };
 
   return (

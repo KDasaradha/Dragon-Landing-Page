@@ -72,14 +72,22 @@
 
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import Particles from "react-tsparticles";
-import { loadFull } from "tsparticles";
+import Particles, { initParticlesEngine } from "@tsparticles/react";
+import { loadSlim } from "@tsparticles/slim";
 
 const NightFuryEffect = () => {
   const [showLetters, setShowLetters] = useState(false);
   const [highlightText, setHighlightText] = useState(false);
+  const [init, setInit] = useState(false);
 
   useEffect(() => {
+    // Initialize particles engine
+    initParticlesEngine(async (engine) => {
+      await loadSlim(engine);
+    }).then(() => {
+      setInit(true);
+    });
+
     // Show letters after 2 seconds
     setTimeout(() => setShowLetters(true), 5000);
     
@@ -87,28 +95,47 @@ const NightFuryEffect = () => {
     setTimeout(() => setHighlightText(true), 7500);
   }, []);
 
-  // Particle Config
-  const particlesInit = async (engine) => {
-    await loadFull(engine);
-  };
-
   const particleOptions = {
     fullScreen: { enable: true, zIndex: 1 },
     particles: {
-      number: { value: 80, density: { enable: true, value_area: 800 } },
+        number: { 
+        value: 80, 
+        density: { 
+          enable: true, 
+          area: 800 
+        } 
+      },
       color: { value: ["#00ffcc", "#ff00ff", "#ffcc00", "#ff3333", "#66ff66"] },
       shape: { type: "circle" },
-      opacity: { value: 0.8, random: true },
-      size: { value: 5, random: true },
-      move: { enable: true, speed: 3, direction: "none", random: true },
-      line_linked: { enable: false },
+      opacity: { 
+        value: 0.8, 
+        random: true 
+      },
+      size: { 
+        value: 5, 
+        random: true 
+      },
+      move: { 
+        enable: true, 
+        speed: 3, 
+        direction: "none" as const,
+        random: true,
+        outModes: "out" as const
+      },
+      links: { 
+        enable: false 
+      },
     },
   };
+
+  if (!init) {
+    return null;
+  }
 
   return (
     <div className="relative flex flex-col items-center justify-center h-screen bg-black">
       {/* Particles Background */}
-      <Particles id="tsparticles" init={particlesInit} options={particleOptions} />
+      <Particles id="tsparticles" options={particleOptions} />
 
       {/* Night-Fury Image on Top */}
       <motion.img

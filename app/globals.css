@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Custom utilities for text truncation */
+@layer utilities {
+  .line-clamp-2 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 2;
+  }
+  
+  .line-clamp-3 {
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 3;
+  }
+}
+
 @layer base {
   :root {
     --background: 210 40% 98%;
@@ -120,4 +137,159 @@
 
 .neon-glow {
   filter: drop-shadow(0 0 10px cyan);
+}
+
+/* Advanced Dragon-themed Effects */
+@keyframes dragon-breath {
+  0% { 
+    background-position: 0% 50%;
+    filter: hue-rotate(0deg);
+  }
+  50% { 
+    background-position: 100% 50%;
+    filter: hue-rotate(180deg);
+  }
+  100% { 
+    background-position: 0% 50%;
+    filter: hue-rotate(360deg);
+  }
+}
+
+.dragon-fire-effect {
+  background: linear-gradient(-45deg, #ff6b35, #f7931e, #ff0000, #ff8c00, #ff4500);
+  background-size: 400% 400%;
+  animation: dragon-breath 4s ease-in-out infinite;
+}
+
+@keyframes ember-float {
+  0% { transform: translateY(0px) rotate(0deg); opacity: 1; }
+  100% { transform: translateY(-100px) rotate(360deg); opacity: 0; }
+}
+
+.ember-particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  background: radial-gradient(circle, #ff6b35, #ff0000);
+  border-radius: 50%;
+  animation: ember-float 3s linear infinite;
+}
+
+/* Magical Sparkle Effect */
+@keyframes sparkle {
+  0% { transform: scale(0) rotate(0deg); opacity: 0; }
+  50% { transform: scale(1) rotate(180deg); opacity: 1; }
+  100% { transform: scale(0) rotate(360deg); opacity: 0; }
+}
+
+.magic-sparkle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: radial-gradient(circle, #ffffff, #00ffff);
+  border-radius: 50%;
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+/* Holographic Effect */
+@keyframes holographic {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.holographic-text {
+  background: linear-gradient(45deg, #ff00ff, #00ffff, #ffff00, #ff00ff);
+  background-size: 400% 400%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: holographic 3s ease-in-out infinite;
+}
+
+/* Glassmorphism Effects */
+.glass-morphism {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+}
+
+.dark .glass-morphism {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Dragon Scale Shimmer */
+@keyframes scale-shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.scale-shimmer {
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.4),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: scale-shimmer 2s infinite;
+}
+
+/* Advanced Hover Effects */
+.hover-glow {
+  transition: all 0.3s ease;
+}
+
+.hover-glow:hover {
+  box-shadow: 
+    0 0 20px rgba(16, 185, 129, 0.6),
+    0 0 40px rgba(16, 185, 129, 0.4),
+    0 0 60px rgba(16, 185, 129, 0.2);
+  transform: translateY(-5px);
+}
+
+/* Pulsing Rarity Effects */
+@keyframes legendary-pulse {
+  0% { box-shadow: 0 0 5px #fbbf24; }
+  50% { box-shadow: 0 0 20px #fbbf24, 0 0 30px #f59e0b; }
+  100% { box-shadow: 0 0 5px #fbbf24; }
+}
+
+@keyframes rare-pulse {
+  0% { box-shadow: 0 0 5px #3b82f6; }
+  50% { box-shadow: 0 0 20px #3b82f6, 0 0 30px #1d4ed8; }
+  100% { box-shadow: 0 0 5px #3b82f6; }
+}
+
+.legendary-aura {
+  animation: legendary-pulse 2s infinite;
+}
+
+.rare-aura {
+  animation: rare-pulse 2s infinite;
+}
+
+/* Morphing Backgrounds */
+@keyframes morphing-bg {
+  0% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+  50% { border-radius: 30% 60% 70% 40% / 50% 60% 30% 60%; }
+  100% { border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%; }
+}
+
+.morphing-blob {
+  animation: morphing-bg 8s ease-in-out infinite;
+}
+
+/* Text Reveal Effects */
+@keyframes text-reveal {
+  0% { width: 0; }
+  100% { width: 100%; }
+}
+
+.text-reveal {
+  overflow: hidden;
+  white-space: nowrap;
+  animation: text-reveal 2s steps(40, end);
 }

@@ -1,0 +1,30 @@
+{
+  "name": "Night Fury - Dragon Legends",
+  "short_name": "Night Fury",
+  "description": "Discover the legends of Night Fury and other powerful dragons",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#10b981",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/images/toothless_icon.ico",
+      "sizes": "32x32",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/images/toothless_logo.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg"
+    },
+    {
+      "src": "/images/toothless_logo.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg"
+    }
+  ],
+  "categories": ["entertainment", "education"],
+  "lang": "en",
+  "dir": "ltr"
+}

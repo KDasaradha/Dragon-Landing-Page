@@ -96,6 +96,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { motion } from "framer-motion";
+import { easings } from "../utils/animations";
 import { Menu, Sun, Moon, Laptop } from "lucide-react";
 import { useScrollProgress } from "../hooks/useScrollProgress"; // Custom hook
 
@@ -108,21 +109,21 @@ interface NavbarProps {
   setSidebarOpen: (open: boolean) => void;
 }
 
-const navVariants = {
+const navVariants: Variants = {
   hidden: { opacity: 0, y: -20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: easings.easeOut } },
 };
 
-const linkVariants = {
+const linkVariants: Variants = {
   hover: {
     scale: 1.1,
     color: "#10b981",
-    transition: { duration: 0.3, ease: "easeInOut" },
+    transition: { duration: 0.3, ease: easings.easeInOut },
   },
 };
 
-const buttonVariants = {
-  hover: { scale: 1.15, transition: { duration: 0.2, ease: "easeInOut" } },
+const buttonVariants: Variants = {
+  hover: { scale: 1.15, transition: { duration: 0.2, ease: easings.easeInOut } },
   tap: { scale: 0.95 },
 };
 

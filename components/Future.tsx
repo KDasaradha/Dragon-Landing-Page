@@ -27,14 +27,15 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { FaDragon, FaExternalLinkAlt, FaRocket } from "react-icons/fa";
+import { easings } from "../utils/animations";
 
 // Animation variants
-const fadeInUp = {
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: easings.easeOut } },
 };
 
-const staggerContainer = {
+const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -42,11 +43,11 @@ const staggerContainer = {
   },
 };
 
-const cardVariants = {
+const cardVariants: Variants = {
   hover: {
     scale: 1.03,
     boxShadow: "0px 15px 30px rgba(0, 0, 0, 0.2)",
-    transition: { duration: 0.3, ease: "easeInOut" },
+    transition: { duration: 0.3, ease: easings.easeInOut },
   },
 };
 

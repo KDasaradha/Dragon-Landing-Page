@@ -72,6 +72,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { FaDragon, FaExternalLinkAlt, FaBolt, FaBrain, FaEye, FaWind, FaFire } from "react-icons/fa";
+import { easings } from "../utils/animations";
 
 // Define feature type
 interface Feature {
@@ -115,27 +116,27 @@ const features: Feature[] = [
 ];
 
 // Animation variants
-const cardVariants = {
+const cardVariants: Variants = {
   hidden: { opacity: 0, y: 30, scale: 0.95 },
   visible: {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: { duration: 0.5, ease: "easeOut" },
+    transition: { duration: 0.5, ease: easings.easeOut },
   },
   hover: {
     scale: 1.05,
     boxShadow: "0px 15px 30px rgba(0, 0, 0, 0.2)",
-    transition: { duration: 0.3, ease: "easeInOut" },
+    transition: { duration: 0.3, ease: easings.easeInOut },
   },
 };
 
-const fadeInUp = {
+const fadeInUp: Variants = {
   hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: easings.easeOut } },
 };
 
-const staggerContainer = {
+const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
