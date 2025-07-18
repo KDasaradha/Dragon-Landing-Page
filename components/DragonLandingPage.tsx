@@ -6,7 +6,6 @@ import {
   FaDragon, 
   FaFire, 
   FaBolt, 
-  FaShieldAlt, 
   FaWind, 
   FaEye,
   FaExternalLinkAlt,
@@ -15,7 +14,6 @@ import {
 } from "react-icons/fa";
 import { Button } from "./ui/button";
 import { Badge } from "./ui/badge";
-import { InfiniteCarousel } from "./ui/infinite-carousel";
 
 // Dragon data with proper structure
 const nightFuryData = {
@@ -96,46 +94,6 @@ const availableAbilities = [
   "Magnesium Fire", "Tracking", "Fire Immunity", "Body Ignition", "Intimidation",
   "Gas and Spark", "Coordinated Attack", "Stealth", "Rock Eating", "Lava Blasts", 
   "Boulder Projectiles"
-];
-
-// Powerful dragons for carousel
-const powerfulDragons = [
-  {
-    id: "deadly-nadder",
-    name: "Deadly Nadder",
-    image: "https://images.unsplash.com/photo-1578662996442-48f60103fc96?w=400&h=300&fit=crop",
-    description: "A dazzling dragon with venomous tail spines and a keen sense of smell."
-  },
-  {
-    id: "monstrous-nightmare", 
-    name: "Monstrous Nightmare",
-    image: "https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?w=400&h=300&fit=crop",
-    description: "A fiery beast that ignites its own body, turning into a living torch."
-  },
-  {
-    id: "stormcutter",
-    name: "Stormcutter", 
-    image: "https://images.unsplash.com/photo-1574521046775-4de01e6cded5?w=400&h=300&fit=crop",
-    description: "A regal four-winged marvel, blending grace and power."
-  },
-  {
-    id: "hideous-zippleback",
-    name: "Hideous Zippleback",
-    image: "https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=400&h=300&fit=crop", 
-    description: "A dual-headed enigma with gas and spark abilities."
-  },
-  {
-    id: "skrill",
-    name: "Skrill",
-    image: "https://images.unsplash.com/photo-1574521046775-4de01e6cded5?w=400&h=300&fit=crop",
-    description: "A rare electric dragon that channels lightning."
-  },
-  {
-    id: "gronckle", 
-    name: "Gronckle",
-    image: "https://images.unsplash.com/photo-1540979388789-6cee28a1cdc9?w=400&h=300&fit=crop",
-    description: "A sturdy, boulder-like dragon that spits molten lava."
-  }
 ];
 
 export default function DragonLandingPage() {
@@ -441,42 +399,6 @@ export default function DragonLandingPage() {
                 </div>
               </div>
             )}
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Other Powerful Dragons with Carousels */}
-      <section className="py-20 px-6 bg-slate-100 dark:bg-slate-800">
-        <div className="max-w-7xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <h2 className="text-4xl md:text-5xl font-bold text-slate-800 dark:text-slate-200 mb-6 flex items-center justify-center gap-3">
-              <FaDragon className="text-emerald-600 dark:text-emerald-400" />
-              Other Powerful Dragons
-            </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-400 max-w-4xl mx-auto">
-              Beyond the Night Fury's grace, these dragons wield powers that rival Toothless
-            </p>
-          </motion.div>
-
-          {/* Infinite Carousel */}
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-          >
-            <InfiniteCarousel 
-              items={powerfulDragons}
-              direction="left"
-              speed={30}
-              pauseOnHover={true}
-              className="mb-8"
-              cardVariant="default"
-            />
           </motion.div>
         </div>
       </section>

@@ -1,12 +1,11 @@
 "use client";
 
-import React, { useState, useCallback, useRef, useEffect } from 'react';
+import React, { useState, useCallback, useRef } from 'react';
 import { motion, AnimatePresence, useMotionValue, useTransform } from 'framer-motion';
-import { Heart, Eye, Star, Zap, Shield, Brain, Wind, Sparkles } from 'lucide-react';
+import { Heart, Eye, Star, Sparkles } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { Progress } from '@/components/ui/progress';
-import { OptimizedImage } from '@/components/ui/optimized-image';
+import { OptimizedImage } from '@/components/custom/optimized-image';
 import { useDragons } from '@/lib/contexts/AppContext';
 import { cn } from '@/lib/utils';
 import type { Dragon } from '@/lib/contexts/AppContext';
@@ -14,7 +13,6 @@ import {
   dragonFlight, 
   magicalAppear, 
   mysticalGlow, 
-  cardFlip3D, 
   dragonHover,
   emberFloat 
 } from '@/utils/animations';
@@ -52,20 +50,9 @@ const rarityEffects = {
   },
 };
 
-const StatIcon = ({ stat }: { stat: string }) => {
-  const icons = {
-    speed: Wind,
-    strength: Zap,
-    intelligence: Brain,
-    stealth: Shield,
-  };
-  const Icon = icons[stat as keyof typeof icons] || Star;
-  return <Icon className="w-4 h-4" />;
-};
 
 export function EnhancedDragonCard({ 
   dragon, 
-  index = 0, 
   variant = 'default', 
   className,
   onClick,

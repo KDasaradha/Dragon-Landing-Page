@@ -6,7 +6,7 @@ import { Heart, Eye, Star, Zap, Shield, Brain, Wind } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Progress } from '@/components/ui/progress';
-import { OptimizedImage } from '@/components/ui/optimized-image';
+import { OptimizedImage } from '@/components/custom/optimized-image';
 import { useDragons } from '@/lib/contexts/AppContext';
 import { useHoverAnimation } from '@/hooks/useAdvancedAnimation';
 import { cn } from '@/lib/utils';
@@ -20,7 +20,7 @@ interface DragonCardProps {
   onClick?: (dragon: Dragon) => void;
 }
 
-const rarityConfig: Variants = {
+const rarityConfig = {
   common: {
     gradient: 'from-slate-400 to-slate-600',
     glow: 'shadow-slate-500/20',
@@ -36,15 +36,15 @@ const rarityConfig: Variants = {
     glow: 'shadow-amber-500/40',
     border: 'border-amber-300',
   },
-};
+} as const;
 
 const StatIcon = ({ stat }: { stat: string }) => {
-  const icons: Variants = {
-    speed: Wind,
+  const icons = {
+    'speed': Wind,
     strength: Zap,
     intelligence: Brain,
     stealth: Shield,
-  };
+  } as const;
   const Icon = icons[stat as keyof typeof icons] || Star;
   return <Icon className="w-4 h-4" />;
 };
@@ -168,7 +168,7 @@ export function DragonCard({
         className="relative w-full h-full preserve-3d"
         animate={isFlipped ? 'back' : 'front'}
         variants={flipVariants}
-        transition={{ duration: 0.6, ease: easings.easeInOut }}
+        transition={{ duration: 0.6, ease: 'easeInOut' }}
       >
         {/* Front Side */}
         <div className={cn(

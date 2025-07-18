@@ -94,8 +94,8 @@ import { Alphas } from "./Alphas";
 import { Future } from "./Future";
 import { Contact } from "./Contact";
 import { Footer } from "./Footer";
-import { LoadingSpinner } from "./ui/loading-spinner";
-import { ErrorBoundary } from "./ui/error-boundary";
+import { LoadingSpinner } from "./custom/loading-spinner";
+import { ErrorBoundary } from "./custom/error-boundary";
 import { DragonSearch } from "./DragonSearch";
 
 import { useScrollAnimation } from "@/hooks/useAdvancedAnimation";

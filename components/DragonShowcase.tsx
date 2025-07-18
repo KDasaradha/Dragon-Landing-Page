@@ -2,8 +2,8 @@
 
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { AdvancedInfiniteCarousel } from "./ui/advanced-infinite-carousel";
-import { InfiniteCarousel } from "./ui/infinite-carousel";
+import { AdvancedInfiniteCarousel } from "./custom/advanced-infinite-carousel";
+import { InfiniteCarousel } from "./custom/infinite-carousel";
 import { FaDragon, FaPlay, FaPause, FaArrowLeft, FaArrowRight } from "react-icons/fa";
 
 // Define Dragon type that extends AdvancedCarouselItem

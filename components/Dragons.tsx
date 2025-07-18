@@ -3,8 +3,8 @@
 import React from "react";
 import { motion, Variants } from "framer-motion";
 import { FaDragon, FaFire, FaBolt, FaShieldAlt, FaWind, FaEye } from "react-icons/fa";
-import { easings } from "../utils/animations";
-import { InfiniteCarousel } from "./ui/infinite-carousel";
+import { InfiniteCarousel } from "./custom/infinite-carousel";
+import "./Dragons.css";
 
 // Dragon data with enhanced information including elements and rarity
 const powerfulDragons = [
@@ -125,15 +125,28 @@ const circularDragons = [
 
 // Animation variants 
 const fadeInUp: Variants = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: easings.easeOut } },
+  hidden: { opacity: 0, y: 20, scale: 0.95 },
+  visible: { 
+    opacity: 1, 
+    y: 0, 
+    scale: 1,
+    transition: { 
+      duration: 0.8, 
+      ease: [0.4, 0, 0.2, 1],
+      scale: { duration: 0.5 } 
+    } 
+  },
 };
 
 const staggerContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: { staggerChildren: 0.2, delayChildren: 0.1 },
+    transition: { 
+      staggerChildren: 0.15, 
+      delayChildren: 0.2,
+      ease: [0.4, 0, 0.2, 1] 
+    },
   },
 };
 
@@ -141,11 +154,15 @@ export default function Dragons() {
   return (
     <section
       id="dragons"
-      className="relative min-h-screen py-16 px-6 md:px-12 bg-gradient-to-br from-white to-gray-100 dark:from-slate-900 dark:to-slate-800 text-center overflow-hidden"
+      className="relative min-h-screen py-16 px-6 md:px-12 bg-gradient-to-br from-white via-emerald-50 to-gray-100 dark:from-slate-900 dark:via-emerald-950/20 dark:to-slate-800 text-center overflow-hidden"
     >
-      {/* Background Decorative Element */}
-      <div className="absolute inset-0 opacity-10 pointer-events-none">
-        <FaDragon className="w-64 h-64 mx-auto text-emerald-500 dark:text-emerald-300 animate-pulse" />
+      {/* Enhanced Background Decorative Elements */}
+      <div className="absolute inset-0 opacity-10 pointer-events-none overflow-hidden">
+        <div className="absolute top-0 left-0 w-full h-full transform rotate-12 scale-150">
+          <FaDragon className="w-96 h-96 mx-auto text-emerald-500 dark:text-emerald-300 animate-float" />
+        </div>
+        <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-gradient-radial from-emerald-500/20 to-transparent dark:from-emerald-400/10" />
+        <div className="absolute -top-24 -left-24 w-96 h-96 bg-gradient-radial from-emerald-500/20 to-transparent dark:from-emerald-400/10" />
       </div>
 
       <div className="max-w-7xl mx-auto relative z-10">
@@ -155,9 +172,9 @@ export default function Dragons() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="text-5xl md:text-6xl font-extrabold tracking-tight text-emerald-600 dark:text-emerald-400 mb-8 flex items-center justify-center gap-3"
+          className="text-5xl md:text-6xl font-extrabold tracking-tight text-emerald-600 dark:text-emerald-400 mb-8 flex items-center justify-center gap-3 drop-shadow-glow"
         >
-          <FaDragon /> Other Powerful Dragons
+          <FaDragon className="animate-bounce-slow" /> Other Powerful Dragons
         </motion.h2>
 
         {/* Intro Paragraph */}
@@ -178,7 +195,7 @@ export default function Dragons() {
           initial="hidden"
           whileInView="visible"
           viewport={{ once: true }}
-          className="mb-16"
+          className="mb-16 transform hover:scale-[1.01] transition-transform duration-300"
         >
           <h3 className="text-3xl font-bold text-slate-800 dark:text-slate-200 mb-6 flex items-center justify-center gap-2">
             <FaDragon className="text-emerald-500" />
@@ -187,16 +204,18 @@ export default function Dragons() {
           <p className="text-lg text-slate-600 dark:text-slate-400 mb-8 max-w-2xl mx-auto">
             Meet the most iconic dragons from the archipelago, each with unique abilities and legendary status.
           </p>
-          <InfiniteCarousel 
-            items={circularDragons}
-            direction="left"
-            speed={35}
-            pauseOnHover={true}
-            cardVariant="circular"
-            showElementBadge={true}
-            showRarityBadge={true}
-            className="mb-8"
-          />
+          <div className="relative overflow-hidden rounded-xl shadow-2xl hover:shadow-emerald-500/20 transition-shadow duration-300">
+            <InfiniteCarousel 
+              items={circularDragons}
+              direction="left"
+              speed={35}
+              pauseOnHover={true}
+              cardVariant="circular"
+              showElementBadge={true}
+              showRarityBadge={true}
+              className="mb-8 transform hover:scale-105 transition-transform duration-500"
+            />
+          </div>
         </motion.div>
 
         {/* First Carousel - Powerful Dragons */}
@@ -208,17 +227,21 @@ export default function Dragons() {
           className="mb-16"
         >
           <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-200 mb-6 flex items-center justify-center gap-2">
-            <FaFire className="text-orange-500" />
+            <FaFire className="text-orange-500 animate-flicker" />
             Elite Dragon Classes
           </h3>
-          <InfiniteCarousel 
-            items={powerfulDragons}
-            direction="left"
-            speed={25}
-            pauseOnHover={true}
-            showElementBadge={true}
-            className="mb-8"
-          />
+          <div className="relative overflow-hidden rounded-xl shadow-2xl hover:shadow-orange-500/20 transition-shadow duration-300">
+            <div className="carousel-container auto-scroll">
+              <InfiniteCarousel 
+                items={powerfulDragons}
+                direction="left"
+                speed={25}
+                pauseOnHover={true}
+                showElementBadge={true}
+                className="mb-8"
+              />
+            </div>
+          </div>
         </motion.div>
 
         {/* Second Carousel - Legendary Dragons (Opposite Direction) */}
@@ -233,16 +256,18 @@ export default function Dragons() {
             <FaBolt className="text-yellow-500" />
             Legendary Titans
           </h3>
-          <InfiniteCarousel 
-            items={legendaryDragons}
-            direction="right"
-            speed={20}
-            pauseOnHover={true}
-            cardVariant="compact"
-            showElementBadge={true}
-            showRarityBadge={true}
-            className="mb-8"
-          />
+          <div className="relative overflow-hidden rounded-xl shadow-2xl hover:shadow-yellow-500/20 transition-shadow duration-300">
+            <InfiniteCarousel 
+              items={legendaryDragons}
+              direction="right"
+              speed={20}
+              pauseOnHover={true}
+              cardVariant="compact"
+              showElementBadge={true}
+              showRarityBadge={true}
+              className="mb-8"
+            />
+          </div>
         </motion.div>
 
         {/* Dragon Classes Overview */}

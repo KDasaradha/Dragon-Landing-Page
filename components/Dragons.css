@@ -1,0 +1,58 @@
+/* Hide scroll bar for all carousels */
+.carousel-container {
+  overflow-x: auto;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE 10+ */
+}
+.carousel-container::-webkit-scrollbar {
+  display: none; /* Chrome/Safari/Webkit */
+}
+
+/* Auto-scroll animation */
+@keyframes autoScroll {
+  0% { scroll-behavior: smooth; }
+  100% { transform: translateX(-50%); }
+}
+
+.auto-scroll {
+  animation: autoScroll 30s linear infinite;
+}
+
+/* Card styles */
+.dragon-card {
+  background: linear-gradient(135deg, #f8fafc 60%, #e0f7fa 100%);
+  border-radius: 1.5rem;
+  box-shadow: 0 6px 24px 0 rgba(0,0,0,0.08);
+  transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
+  margin: 0 1rem;
+  min-width: 260px;
+  max-width: 320px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.dragon-card:hover {
+  transform: scale(1.06) rotate(-1deg);
+  box-shadow: 0 12px 32px 0 rgba(0,0,0,0.16);
+}
+
+/* Container styles */
+.dragons-section {
+  background: linear-gradient(120deg, #e0f7fa 0%, #f8fafc 100%);
+  border-radius: 2rem;
+  padding: 2.5rem 1rem 3rem 1rem;
+  margin: 2rem 0;
+  box-shadow: 0 8px 32px 0 rgba(0,0,0,0.10);
+}
+
+/* Responsive tweaks */
+@media (max-width: 900px) {
+  .dragon-card {
+    min-width: 200px;
+    max-width: 240px;
+    margin: 0 0.5rem;
+  }
+  .dragons-section {
+    padding: 1.5rem 0.5rem 2rem 0.5rem;
+  }
+}

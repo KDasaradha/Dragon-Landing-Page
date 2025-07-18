@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next'
 import './globals.css'
 import { AppProvider } from '@/lib/contexts/AppContext'
-import { ErrorBoundary } from '@/components/ui/error-boundary'
+import { ErrorBoundary } from '@/components/custom/error-boundary'
 import { ThemeProvider } from '@/components/theme-provider'
 
 export const metadata: Metadata = {

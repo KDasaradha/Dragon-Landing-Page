@@ -19,7 +19,7 @@ import {
 
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import { OptimizedImage } from '@/components/ui/optimized-image';
+import { OptimizedImage } from '@/components/custom/optimized-image';
 import { 
   DropdownMenu,
   DropdownMenuContent,
@@ -57,9 +57,9 @@ const themeOptions = [
 
 export function ProfessionalNavbar() {
   const { theme, setTheme } = useTheme();
-  const { dragons, favorites, filteredDragons } = useDragons();
-  const { sidebarOpen, toggleSidebar, currentSection } = useUI();
-  const { progress, isScrolling } = useScrollProgress();
+  const { dragons, favorites } = useDragons();
+  const { currentSection } = useUI();
+  const { progress } = useScrollProgress();
 
   const [isScrolled, setIsScrolled] = useState(false);
   const [commandOpen, setCommandOpen] = useState(false);
